@@ -11,6 +11,9 @@ namespace ActivityLogger.Correlation.Mvc5
 
         public void OnActionExecuted(ActionExecutedContext filterContext)
         {
+            if (filterContext.IsChildAction)
+                return;
+
             if (ActivityLogScope.Current == null)
                 return;
 
