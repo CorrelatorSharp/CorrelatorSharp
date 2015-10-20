@@ -4,11 +4,6 @@ namespace Correlator
 {
     public class ActivityScope : IDisposable
     {
-        public static ActivityScope Find(string id)
-        {
-            return ActivityTracker.Find(id);
-        }
-
         public static ActivityScope Current {
             get { return ActivityTracker.Current; }
         }
