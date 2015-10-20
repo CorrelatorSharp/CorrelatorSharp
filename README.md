@@ -1,3 +1,3 @@
-# ActivityLogger
+# CorrelatorSharp
 
 To be written up :)
