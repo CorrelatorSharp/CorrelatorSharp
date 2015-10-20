@@ -1,0 +1,25 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<script>
+    $(function() {
+        $("#sendRequest").on("click", function () {
+            $.ajax({
+                url: encodeURI('/home/test'),
+                type: 'POST',
+                beforeSend: function (xhr) {
+                    xhr.setRequestHeader('X-Correlation-Id', '1234');
+                },
+                data: {},
+                contentType: 'application/x-www-form-urlencoded',
+                success: function (data) { alert("server responded with correlation id: " + data); },
+                error: function () { },
+            });
+        });
+    });
+</script>
+
+<div>
+    <button id="sendRequest">Send Request with Correlation Id "1234"</button>
+</div>
