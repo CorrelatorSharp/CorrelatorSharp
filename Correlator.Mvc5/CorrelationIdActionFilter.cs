@@ -8,19 +8,21 @@ namespace Correlator.Mvc5
     public class CorrelationIdActionFilter : IActionFilter
     {
         private const string CORRELATION_ID_HTTP_HEADER = "X-Correlation-Id";
+        private const string TEMPDATA_KEY = "__Correlator";
 
         public void OnActionExecuted(ActionExecutedContext filterContext)
         {
             if (filterContext.IsChildAction)
                 return;
 
-            if (ActivityScope.Current == null)
+            ActivityScope scope = filterContext.Controller.TempData[TEMPDATA_KEY] as ActivityScope;
+            if (scope == null)
                 return;
 
             if (filterContext.HttpContext != null && filterContext.HttpContext.Response != null)
-                filterContext.HttpContext.Response.AddHeader(CORRELATION_ID_HTTP_HEADER, ActivityScope.Current.Id);
+                filterContext.HttpContext.Response.AddHeader(CORRELATION_ID_HTTP_HEADER, scope.Id);
 
-            ActivityScope.Current.Dispose();
+            scope.Dispose();
         }
 
         /// <summary>
@@ -42,7 +44,7 @@ namespace Correlator.Mvc5
             if (String.IsNullOrWhiteSpace(correlationId))
                 correlationId = Guid.NewGuid().ToString();
 
-            new ActivityScope(null, correlationId);
+            filterContext.Controller.TempData[TEMPDATA_KEY] = new ActivityScope(null, correlationId);
         }
     }
 }

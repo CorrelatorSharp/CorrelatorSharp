@@ -34,14 +34,11 @@ namespace Correlator.WebApi
             if (String.IsNullOrWhiteSpace(correlationId))
                 correlationId = Guid.NewGuid().ToString();
 
-            new ActivityScope(null, correlationId);
+            ActivityScope scope = new ActivityScope(null, correlationId);
 
             return continuation().ContinueWith(task => {
-
-                 if (ActivityScope.Current != null) {
-                    task.Result.Headers.Add(CORRELATION_ID_HTTP_HEADER, ActivityScope.Current.Id);
-                    ActivityScope.Current.Dispose();
-                }
+                task.Result.Headers.Add(CORRELATION_ID_HTTP_HEADER, scope.Id);
+                scope.Dispose();
 
                 return task.Result;
             });
