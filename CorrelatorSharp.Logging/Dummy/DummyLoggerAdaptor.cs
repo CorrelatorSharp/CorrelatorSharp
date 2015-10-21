@@ -12,6 +12,26 @@ namespace CorrelatorSharp.Logging.Dummy
             }
         }
 
+        public bool IsTraceEnabled {
+            get { return true; }
+        }
+
+        public bool IsWarnEnabled {
+            get { return true; }
+        }
+
+        public bool IsInfoEnabled {
+            get { return true; }
+        }
+
+        public bool IsErrorEnabled {
+            get { return true; }
+        }
+
+        public bool IsFatalEnabled {
+            get { return true; }
+        }
+
         public void LogError(string format, params object[] values)
         {
         }
@@ -44,11 +64,11 @@ namespace CorrelatorSharp.Logging.Dummy
         {
         }
 
-        public void LogWarning(string format, params object[] values)
+        public void LogWarn(string format, params object[] values)
         {
         }
 
-        public void LogWarning(Exception exception, string format = "", params object[] values)
+        public void LogWarn(Exception exception, string format = "", params object[] values)
         {
         }
     }

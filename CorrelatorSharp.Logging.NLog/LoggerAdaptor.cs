@@ -28,6 +28,26 @@ namespace CorrelatorSharp.Logging.NLog
             }
         }
 
+        public bool IsTraceEnabled {
+            get { return _logger.IsTraceEnabled; }
+        }
+
+        public bool IsWarnEnabled {
+            get { return _logger.IsWarnEnabled; }
+        }
+
+        public bool IsInfoEnabled {
+            get { return _logger.IsInfoEnabled; }
+        }
+
+        public bool IsErrorEnabled {
+            get { return _logger.IsErrorEnabled; }
+        }
+
+        public bool IsFatalEnabled {
+            get { return _logger.IsFatalEnabled; }
+        }
+
         private LogEventInfo CreateLogEntry(LogLevel level, string format, params object[] values)
         {
             LogEventInfo entry = new LogEventInfo(level, Name, null, format, values);
@@ -63,7 +83,7 @@ namespace CorrelatorSharp.Logging.NLog
             }
         }
 
-        public void LogWarning(Exception exception, string format = "", params object[] values)
+        public void LogWarn(Exception exception, string format = "", params object[] values)
         {
             if (_logger.IsWarnEnabled) {
                 LogEventInfo entry = CreateLogEntry(LogLevel.Warn, format, values);
@@ -102,7 +122,7 @@ namespace CorrelatorSharp.Logging.NLog
             }
         }
 
-        public void LogWarning(string format, params object[] values)
+        public void LogWarn(string format, params object[] values)
         {
             if (_logger.IsWarnEnabled) {
                 LogEventInfo entry = CreateLogEntry(LogLevel.Warn, format, values);

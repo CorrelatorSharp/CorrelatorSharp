@@ -16,7 +16,14 @@ namespace CorrelatorSharp.Logging
         void LogInfo(Exception exception, string format = "", params object[] values);
         void LogTrace(string format, params object[] values);
         void LogTrace(Exception exception, string format = "", params object[] values);
-        void LogWarning(string format, params object[] values);
-        void LogWarning(Exception exception, string format = "", params object[] values);
+        void LogWarn(string format, params object[] values);
+        void LogWarn(Exception exception, string format = "", params object[] values);
+
+        bool IsTraceEnabled { get; }
+        bool IsWarnEnabled { get; }
+        bool IsInfoEnabled { get; }
+        bool IsErrorEnabled { get; }
+        bool IsFatalEnabled { get; }
+      
     }
 }
