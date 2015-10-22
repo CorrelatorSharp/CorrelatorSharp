@@ -38,6 +38,7 @@
   <ItemGroup>
     <Compile Include="ActivityScope.cs" />
     <Compile Include="ActivityTracker.cs" />
+    <Compile Include="Headers.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

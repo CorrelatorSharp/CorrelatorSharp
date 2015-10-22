@@ -7,7 +7,7 @@ namespace CorrelatorSharp.Mvc5
 {
     public class CorrelationIdActionFilter : IActionFilter
     {
-        private const string CORRELATION_ID_HTTP_HEADER = "X-Correlation-Id";
+        private static readonly string CORRELATION_ID_HTTP_HEADER = Headers.CorrelationId;
         private const string TEMPDATA_KEY = "__Correlator";
 
         public void OnActionExecuted(ActionExecutedContext filterContext)

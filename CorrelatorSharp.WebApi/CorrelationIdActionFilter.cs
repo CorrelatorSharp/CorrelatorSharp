@@ -13,7 +13,7 @@ namespace CorrelatorSharp.WebApi
     public class CorrelationIdActionFilter : IActionFilter
     {
 
-        private const string CORRELATION_ID_HTTP_HEADER = "X-Correlation-Id";
+        private static readonly string CORRELATION_ID_HTTP_HEADER = Headers.CorrelationId;
 
         public bool AllowMultiple {
             get { return false; }
