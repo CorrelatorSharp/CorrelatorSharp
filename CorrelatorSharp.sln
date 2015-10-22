@@ -25,6 +25,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CorrelatorSharp.WebApi.Samp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CorrelatorSharp.WebApi", "CorrelatorSharp.WebApi\CorrelatorSharp.WebApi.csproj", "{354C80A6-B023-4C69-B745-CDA6BAF8510E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CorrelatorSharp.RestSharp", "CorrelatorSharp.RestSharp\CorrelatorSharp.RestSharp.csproj", "{49000770-7C59-4B43-8B09-DDE00E094780}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -75,6 +77,10 @@ Global
 		{354C80A6-B023-4C69-B745-CDA6BAF8510E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{354C80A6-B023-4C69-B745-CDA6BAF8510E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{354C80A6-B023-4C69-B745-CDA6BAF8510E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{49000770-7C59-4B43-8B09-DDE00E094780}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{49000770-7C59-4B43-8B09-DDE00E094780}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{49000770-7C59-4B43-8B09-DDE00E094780}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{49000770-7C59-4B43-8B09-DDE00E094780}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
