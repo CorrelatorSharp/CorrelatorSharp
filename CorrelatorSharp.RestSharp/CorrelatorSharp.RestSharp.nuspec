@@ -5,14 +5,15 @@
     <version>$version$</version>
     <authors>Ivan Zlatev</authors>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <description></description>
+    <description>CorrelatorSharp</description>
+    <projectUrl>https://github.com/ivanz/CorrelatorSharp</projectUrl>
     <dependencies>
       <dependency id="CorrelatorSharp" version="[1,2)" />
       <dependency id="Microsoft.AspNet.Mvc" version="[105,106)" />
     </dependencies>
   </metadata>
   <files>
-      <file src="bin\Release\CorrelatorSharp.RestSharp.dll" target="lib\net46\CorrelatorSharp.RestSharp.dll" />
-      <file src="bin\Release\CorrelatorSharp.RestSharp.pdb" target="lib\net46\CorrelatorSharp.RestSharp.pdb" />
+    <file src="bin\Release\CorrelatorSharp.RestSharp.dll" target="lib\net46\CorrelatorSharp.RestSharp.dll" />
+    <file src="bin\Release\CorrelatorSharp.RestSharp.pdb" target="lib\net46\CorrelatorSharp.RestSharp.pdb" />
   </files>
 </package>

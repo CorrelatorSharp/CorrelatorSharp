@@ -5,13 +5,14 @@
     <version>$version$</version>
     <authors>Ivan Zlatev</authors>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <description></description>
+    <description>CorrelatorSharp</description>
+    <projectUrl>https://github.com/ivanz/CorrelatorSharp</projectUrl>
     <dependencies>
       <dependency id="CorrelatorSharp" version="[1,2)" />
     </dependencies>
   </metadata>
   <files>
-      <file src="bin\Release\CorrelatorSharp.Logging.dll" target="lib\net46\CorrelatorSharp.Logging.dll" />
-      <file src="bin\Release\CorrelatorSharp.Logging.pdb" target="lib\net46\CorrelatorSharp.Logging.pdb" />
+    <file src="bin\Release\CorrelatorSharp.Logging.dll" target="lib\net46\CorrelatorSharp.Logging.dll" />
+    <file src="bin\Release\CorrelatorSharp.Logging.pdb" target="lib\net46\CorrelatorSharp.Logging.pdb" />
   </files>
 </package>

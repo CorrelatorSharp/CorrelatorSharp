@@ -5,15 +5,16 @@
     <version>$version$</version>
     <authors>Ivan Zlatev</authors>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <description></description>
+    <description>CorrelatorSharp</description>
+    <projectUrl>https://github.com/ivanz/CorrelatorSharp</projectUrl>
     <dependencies>
       <dependency id="CorrelatorSharp" version="[1,2)" />
-      <dependency id="Microsoft.AspNet.WebApi.Client" version="[5.2.3,6)" />
-      <dependency id="Microsoft.AspNet.WebApi.Core" version="[5.2.3,6)" />
+      <dependency id="Microsoft.AspNet.WebApi.Client" version="[5.2,6)" />
+      <dependency id="Microsoft.AspNet.WebApi.Core" version="[5.2,6)" />
     </dependencies>
   </metadata>
   <files>
-      <file src="bin\Release\CorrelatorSharp.WebApi.dll" target="lib\net46\CorrelatorSharp.WebApi.dll" />
-      <file src="bin\Release\CorrelatorSharp.WebApi.pdb" target="lib\net46\CorrelatorSharp.WebApi.pdb" />
+    <file src="bin\Release\CorrelatorSharp.WebApi.dll" target="lib\net46\CorrelatorSharp.WebApi.dll" />
+    <file src="bin\Release\CorrelatorSharp.WebApi.pdb" target="lib\net46\CorrelatorSharp.WebApi.pdb" />
   </files>
 </package>
