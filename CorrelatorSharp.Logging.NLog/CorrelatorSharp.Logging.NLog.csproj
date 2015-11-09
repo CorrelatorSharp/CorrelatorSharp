@@ -64,6 +64,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="CorrelatorSharp.Logging.NLog.nuspec" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>

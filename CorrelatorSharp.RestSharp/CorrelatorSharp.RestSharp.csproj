@@ -49,6 +49,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="CorrelatorSharp.RestSharp.nuspec" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>

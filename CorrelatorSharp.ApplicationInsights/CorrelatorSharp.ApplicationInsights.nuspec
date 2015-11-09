@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+    <id>CorrelatorSharp.ApplicationInsights</id>
+    <version>$version$</version>
+    <authors>Ivan Zlatev</authors>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description></description>
+    <dependencies>
+      <dependency id="Microsoft.ApplicationInsights" version="[1.2,2)" />
+      <dependency id="CorrelatorSharp" version="[1,2)" />
+    </dependencies>
+  </metadata>
+  <files>
+      <file src="bin\Release\CorrelatorSharp.ApplicationInsights.dll" target="lib\net46\CorrelatorSharp.ApplicationInsights.dll" />
+      <file src="bin\Release\CorrelatorSharp.ApplicationInsights.pdb" target="lib\net46\CorrelatorSharp.ApplicationInsights.pdb" />
+  </files>
+</package>

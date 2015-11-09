@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+    <id>CorrelatorSharp.Logging.NLog</id>
+    <version>$version$</version>
+    <authors>Ivan Zlatev</authors>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description></description>
+    <dependencies>
+      <dependency id="CorrelatorSharp" version="[1,2)" />
+      <dependency id="CorrelatorSharp.Logging" version="[1,2)" />
+    </dependencies>
+  </metadata>
+  <files>
+      <file src="bin\Release\CorrelatorSharp.Logging.NLog.dll" target="lib\net46\CorrelatorSharp.Logging.NLog.dll" />
+      <file src="bin\Release\CorrelatorSharp.Logging.NLog.pdb" target="lib\net46\CorrelatorSharp.Logging.NLog.pdb" />
+  </files>
+</package>

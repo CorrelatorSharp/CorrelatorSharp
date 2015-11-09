@@ -55,6 +55,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="CorrelatorSharp.ApplicationInsights.nuspec" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
