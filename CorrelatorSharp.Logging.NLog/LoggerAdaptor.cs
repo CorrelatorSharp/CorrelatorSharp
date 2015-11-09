@@ -7,9 +7,9 @@ namespace CorrelatorSharp.Logging.NLog
 {
     public class LoggerAdaptor : Logging.ILogger
     {
-        public const string ActivityIdPropertyName = "al-activity-id";
-        public const string ParentIdPropertyName = "al-activity-parentid";
-        public const string DescriptionPropertyName = "al-activity-description";
+        public const string ActivityIdPropertyName = "cs-activity-id";
+        public const string ParentIdPropertyName = "cs-activity-parentid";
+        public const string NamePropertyName = "cs-activity-name";
 
         private readonly NLogILogger _logger;
 
@@ -56,7 +56,7 @@ namespace CorrelatorSharp.Logging.NLog
             if (currentActivity != null) {
                 entry.Properties[ActivityIdPropertyName] = currentActivity.Id;
                 entry.Properties[ParentIdPropertyName] = currentActivity.ParentId;
-                entry.Properties[DescriptionPropertyName] = currentActivity.Name;
+                entry.Properties[NamePropertyName] = currentActivity.Name;
             }
 
             return entry;

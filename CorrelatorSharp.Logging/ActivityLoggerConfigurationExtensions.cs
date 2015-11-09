@@ -5,9 +5,9 @@ namespace CorrelatorSharp.Logging
 {
     public static class ActivityLoggerConfigurationExtensions
     {
-        public static ActivityLoggerConfiguration WithLogManager(this ActivityLoggerConfiguration config, ILogManagerAdaptor adaptor)
+        public static LoggingConfiguration WithLogManager(this LoggingConfiguration config, ILogManagerAdaptor adaptor)
         {
-            ActivityLoggerConfiguration.LogManager = adaptor;
+            LoggingConfiguration.LogManager = adaptor;
             return config;
         }
     }

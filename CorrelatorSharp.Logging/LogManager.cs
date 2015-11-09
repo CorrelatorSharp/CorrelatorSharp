@@ -6,12 +6,12 @@ namespace CorrelatorSharp.Logging
     {
         public static ILogger GetCurrentClassLogger()
         {
-            return ActivityLoggerConfiguration.LogManager.GetCurrentClassLogger();
+            return LoggingConfiguration.LogManager.GetCurrentClassLogger();
         }
 
         public static ILogger GetLogger(string name)
         {
-            return ActivityLoggerConfiguration.LogManager.GetLogger(name);
+            return LoggingConfiguration.LogManager.GetLogger(name);
         }
 
     }
