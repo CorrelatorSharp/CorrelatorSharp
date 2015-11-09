@@ -10,7 +10,6 @@ namespace CorrelatorSharp.ApplicationInsights
         {
             if (ActivityScope.Current == null)
                 return;
-
             telemetry.Context.Operation.Id = ActivityScope.Current.Id;
             telemetry.Context.Operation.Name = ActivityScope.Current.Name;
 
