@@ -45,7 +45,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ActivityLoggerConfigurationExtensions.cs" />
+    <Compile Include="LoggingConfigurationExtensions.cs" />
     <Compile Include="LayoutRenderers\ActivityDescriptionLayoutRenderer.cs" />
     <Compile Include="LayoutRenderers\ActivityParentLayoutRenderer.cs" />
     <Compile Include="LayoutRenderers\ActivityIdLayoutRenderer.cs" />

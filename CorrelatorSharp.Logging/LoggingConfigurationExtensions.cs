@@ -3,7 +3,7 @@ using System.Linq;
 
 namespace CorrelatorSharp.Logging
 {
-    public static class ActivityLoggerConfigurationExtensions
+    public static class LoggingConfigurationExtensions
     {
         public static LoggingConfiguration WithLogManager(this LoggingConfiguration config, ILogManagerAdaptor adaptor)
         {

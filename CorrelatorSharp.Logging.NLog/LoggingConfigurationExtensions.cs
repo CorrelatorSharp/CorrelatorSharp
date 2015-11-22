@@ -2,7 +2,7 @@
 
 namespace CorrelatorSharp.Logging
 {
-    public static class ActivityLoggerConfigurationExtensions
+    public static class LoggingConfigurationExtensions
     {
         public static LoggingConfiguration UseNLog(this LoggingConfiguration config)
         {
