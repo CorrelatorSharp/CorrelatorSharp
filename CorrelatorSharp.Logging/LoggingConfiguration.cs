@@ -6,15 +6,15 @@ using System.Threading.Tasks;
 
 namespace CorrelatorSharp.Logging
 {
-    public class ActivityLoggerConfiguration
+    public class LoggingConfiguration
     {
-        public static readonly ActivityLoggerConfiguration Current = new ActivityLoggerConfiguration();
+        public static readonly LoggingConfiguration Current = new LoggingConfiguration();
 
         private static readonly Lazy<ILogManagerAdaptor> _dummyLogManager = new Lazy<ILogManagerAdaptor>(() => Dummy.DummyLogManagerAdaptor.Instance);
         private static ILogManagerAdaptor _logManager;
 
 
-        private ActivityLoggerConfiguration()
+        private LoggingConfiguration()
         {
         }
 

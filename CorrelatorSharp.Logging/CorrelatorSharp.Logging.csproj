@@ -36,8 +36,8 @@
     <Reference Include="Microsoft.CSharp" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ActivityLoggerConfiguration.cs" />
-    <Compile Include="ActivityLoggerConfigurationExtensions.cs" />
+    <Compile Include="LoggingConfiguration.cs" />
+    <Compile Include="LoggingConfigurationExtensions.cs" />
     <Compile Include="Dummy\DummyLoggerAdaptor.cs" />
     <Compile Include="Dummy\DummyLogManagerAdaptor.cs" />
     <Compile Include="ILogger.cs" />

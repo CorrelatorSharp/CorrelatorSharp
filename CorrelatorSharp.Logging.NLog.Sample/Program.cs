@@ -10,7 +10,7 @@ namespace CorrelatorSharp.Logging.NLog.Sample
 
         static void Main(string[] args)
         {
-            ActivityLoggerConfiguration.Current.UseNLog();
+            LoggingConfiguration.Current.UseNLog();
 
             _logger = LogManager.GetLogger("NLogSample");
 
