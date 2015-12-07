@@ -9,7 +9,6 @@
     <projectUrl>https://github.com/ivanz/CorrelatorSharp</projectUrl>
     <dependencies>
       <dependency id="CorrelatorSharp" version="[1.0.2,2)" />
-      <dependency id="Microsoft.AspNet.Mvc" version="[105,106)" />
     </dependencies>
   </metadata>
   <files>
