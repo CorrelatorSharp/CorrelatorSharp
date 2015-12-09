@@ -12,6 +12,8 @@ namespace CorrelatorSharp.Logging
         void LogError(Exception exception, string format = "", params object[] values);
         void LogFatal(string format, params object[] values);
         void LogFatal(Exception exception, string format = "", params object[] values);
+        void LogDebug(string format, params object[] values);
+        void LogDebug(Exception exception, string format = "", params object[] values);
         void LogInfo(string format, params object[] values);
         void LogInfo(Exception exception, string format = "", params object[] values);
         void LogTrace(string format, params object[] values);
@@ -24,6 +26,7 @@ namespace CorrelatorSharp.Logging
         bool IsInfoEnabled { get; }
         bool IsErrorEnabled { get; }
         bool IsFatalEnabled { get; }
+        bool IsDebugEnabled { get; }
       
     }
 }

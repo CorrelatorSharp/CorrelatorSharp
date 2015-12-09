@@ -44,6 +44,10 @@ namespace CorrelatorSharp.Logging.NLog
             get { return _logger.IsErrorEnabled; }
         }
 
+        public bool IsDebugEnabled {
+            get { return _logger.IsDebugEnabled; }
+        }
+
         public bool IsFatalEnabled {
             get { return _logger.IsFatalEnabled; }
         }
@@ -67,6 +71,17 @@ namespace CorrelatorSharp.Logging.NLog
             if (_logger.IsTraceEnabled) {
 
                 LogEventInfo entry = CreateLogEntry(LogLevel.Trace, format, values);
+                entry.Exception = exception;
+
+                _logger.Log(entry);
+            }
+        }
+
+        public void LogDebug(Exception exception, string format = "", params object[] values)
+        {
+            if (_logger.IsDebugEnabled) {
+
+                LogEventInfo entry = CreateLogEntry(LogLevel.Debug, format, values);
                 entry.Exception = exception;
 
                 _logger.Log(entry);
@@ -144,6 +159,15 @@ namespace CorrelatorSharp.Logging.NLog
         {
             if (_logger.IsTraceEnabled) {
                 LogEventInfo entry = CreateLogEntry(LogLevel.Trace, format, values);
+
+                _logger.Log(entry);
+            }
+        }
+
+        public void LogDebug(string format, params object[] values)
+        {
+            if (_logger.IsDebugEnabled) {
+                LogEventInfo entry = CreateLogEntry(LogLevel.Debug, format, values);
 
                 _logger.Log(entry);
             }

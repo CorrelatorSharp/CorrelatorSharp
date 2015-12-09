@@ -32,6 +32,10 @@ namespace CorrelatorSharp.Logging.Dummy
             get { return true; }
         }
 
+        public bool IsDebugEnabled {
+            get { return true; }
+        }
+
         public void LogError(string format, params object[] values)
         {
         }
@@ -69,6 +73,14 @@ namespace CorrelatorSharp.Logging.Dummy
         }
 
         public void LogWarn(Exception exception, string format = "", params object[] values)
+        {
+        }
+
+        public void LogDebug(string format, params object[] values)
+        {
+        }
+
+        public void LogDebug(Exception exception, string format = "", params object[] values)
         {
         }
     }
