@@ -2,28 +2,14 @@
 using System.Linq;
 using System.Web.Mvc;
 using System.Collections.Specialized;
+using System.Web;
 
 namespace CorrelatorSharp.Mvc5
 {
-    public class CorrelationIdActionFilter : IActionFilter
+    public class CorrelationIdActionFilter : IActionFilter, IResultFilter
     {
         private static readonly string CORRELATION_ID_HTTP_HEADER = Headers.CorrelationId;
-        private const string TEMPDATA_KEY = "__Correlator";
-
-        public void OnActionExecuted(ActionExecutedContext filterContext)
-        {
-            if (filterContext.IsChildAction)
-                return;
-
-            ActivityScope scope = filterContext.Controller.TempData[TEMPDATA_KEY] as ActivityScope;
-            if (scope == null)
-                return;
-
-            if (filterContext.HttpContext != null && filterContext.HttpContext.Response != null)
-                filterContext.HttpContext.Response.AddHeader(CORRELATION_ID_HTTP_HEADER, scope.Id);
-
-            scope.Dispose();
-        }
+        private const string ITEM_KEY = "__Correlator";
 
         /// <summary>
         /// Looks for "X-Corelation-Id" http header and either uses that or generates a new one
@@ -34,9 +20,38 @@ namespace CorrelatorSharp.Mvc5
             if (filterContext.IsChildAction)
                 return;
 
+            OpenScope(filterContext.RequestContext?.HttpContext);
+        }
+
+        public void OnActionExecuted(ActionExecutedContext filterContext)
+        {
+            if (filterContext.IsChildAction)
+                return;
+
+            if (filterContext.Canceled || (filterContext.Exception != null && !filterContext.ExceptionHandled))
+                CloseScope(filterContext.HttpContext);
+        }
+
+        public void OnResultExecuting(ResultExecutingContext filterContext)
+        {
+        }
+
+        public void OnResultExecuted(ResultExecutedContext filterContext)
+        {
+             if (filterContext.IsChildAction)
+                return;
+
+             CloseScope(filterContext.HttpContext);
+        }
+        
+        private static void OpenScope(HttpContextBase context)
+        {
+            if (context == null)
+                return;
+
             string correlationId = null;
 
-            NameValueCollection headers = filterContext.RequestContext?.HttpContext?.Request?.Headers;
+            NameValueCollection headers = context.Request?.Headers;
             if (headers != null && headers.AllKeys.Any(key => CORRELATION_ID_HTTP_HEADER.Equals(key, StringComparison.InvariantCultureIgnoreCase))) {
                 correlationId = headers.Get(CORRELATION_ID_HTTP_HEADER);
             }
@@ -44,7 +59,22 @@ namespace CorrelatorSharp.Mvc5
             if (String.IsNullOrWhiteSpace(correlationId))
                 correlationId = Guid.NewGuid().ToString();
 
-            filterContext.Controller.TempData[TEMPDATA_KEY] = new ActivityScope(null, correlationId);
+            context.Items[ITEM_KEY] = new ActivityScope(null, correlationId);
+        }
+
+        private static void CloseScope(HttpContextBase context)
+        {
+            if (context == null)
+                return;
+
+            ActivityScope scope = context.Items[ITEM_KEY] as ActivityScope;
+            if (scope == null)
+                return;
+
+            if (context.Response != null)
+                context.Response.AddHeader(CORRELATION_ID_HTTP_HEADER, scope.Id);
+
+            scope.Dispose();
         }
     }
 }
