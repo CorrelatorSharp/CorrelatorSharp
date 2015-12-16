@@ -56,10 +56,9 @@ Current Activity ParentId: 4050a075-51db-4e62-8a92-17720a73045e
 
 ### Continuous Integration
 
-|   Branch    |   Usage       |   Status   |
-|-------------|---------------|------------|
-| master      | development   | [![Build status](https://ci.appveyor.com/api/projects/status/gbvbttjxcuvtjn50/branch/master?svg=true)](https://ci.appveyor.com/project/ivanz/correlatorsharp/branch/master)  |
-| release     | released code | [![Build status](https://ci.appveyor.com/api/projects/status/gbvbttjxcuvtjn50/branch/release?svg=true)](https://ci.appveyor.com/project/ivanz/correlatorsharp/branch/release)  |
+|   Branch    |    Status   |
+|-------------|-------------|
+| master      |   [![Build status](https://ci.appveyor.com/api/projects/status/gbvbttjxcuvtjn50/branch/master?svg=true)](https://ci.appveyor.com/project/ivanz/correlatorsharp/branch/master)  |
 
 
 ### Standalone
