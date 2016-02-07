@@ -1,0 +1,12 @@
+{
+  "version": "1.0.0-*",
+  "frameworks": {
+    "net46": {
+      "wrappedProject": "../../CorrelatorSharp/CorrelatorSharp.csproj",
+      "bin": {
+        "assembly": "../../CorrelatorSharp/obj/{configuration}/CorrelatorSharp.dll",
+        "pdb": "../../CorrelatorSharp/obj/{configuration}/CorrelatorSharp.pdb"
+      }
+    }
+  }
+}

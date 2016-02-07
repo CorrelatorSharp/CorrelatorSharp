@@ -1,0 +1,18 @@
+﻿{
+  "version": "1.2.0-beta1",
+  "description": "CorrelatorSharp.RestSharp",
+  "authors": [ "Ivan Zlatev" ],
+  "tags": [ "correlatorsharp", "logging", "correlation" ],
+  "projectUrl": "https://github.com/ivanz/CorrelatorSharp",
+  "licenseUrl": "",
+  "requireLicenseAcceptance": false,
+  
+  "frameworks": {
+    "net460": {
+      "dependencies": {
+        "CorrelatorSharp": "1.0.0-*",
+        "RestSharp": "105.2.3"
+      }
+    }
+  }
+}
