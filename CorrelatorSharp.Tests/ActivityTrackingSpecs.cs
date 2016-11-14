@@ -1,4 +1,7 @@
-﻿using Machine.Specifications;
+﻿using System;
+using System.Threading;
+using System.Threading.Tasks;
+using Machine.Specifications;
 
 namespace CorrelatorSharp.Tests
 {
@@ -89,6 +92,43 @@ namespace CorrelatorSharp.Tests
         Cleanup cleanup = () => {
             ParentScope.Dispose();
         };
+    }
+
+    public class When_running_multiple_async_tasks
+    {
+        Because of = () => {
+            using (var scope = new ActivityScope("Root task scope", "Bob")) {
+                var barrier = new Barrier(2);
+                var t1 = Task.Run((Action) (() => ChildTaskA(barrier, scope.Id)));
+                var t2 = Task.Run((Action) (() => ChildTaskB(barrier, scope.Id)));
+                Task.WhenAll(t1, t2).GetAwaiter().GetResult();
+            }
+        };
+
+        It should_preserve_correct_parents = () => {
+            // Expectations in child tasks
+        };
+
+        It should_not_pop_an_empty_stack = () => {
+            // Expectations in child tasks
+        };
+
+        private static void ChildTaskA(Barrier barrier, string expectedParentId)
+        {
+            using (var scopeA = new ActivityScope("Child task A", "Bob 1")) {
+                barrier.SignalAndWait();
+                scopeA.ParentId.ShouldEqual(expectedParentId);
+            }
+        }
+
+        private static void ChildTaskB(Barrier barrier, string expectedParentId)
+        {
+            using (var scopeB = new ActivityScope("Child task B", "Bob 2"))
+            {
+                barrier.SignalAndWait();
+                scopeB.ParentId.ShouldEqual(expectedParentId);
+            }
+        }
     }
 
     public class When_the_parent_activity_scope_is_closed
