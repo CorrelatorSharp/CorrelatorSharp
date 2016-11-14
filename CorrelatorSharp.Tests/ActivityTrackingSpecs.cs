@@ -94,10 +94,10 @@ namespace CorrelatorSharp.Tests
         };
     }
 
-    public class When_running_multiple_async_tasks
+    public class When_running_multiple_tasks
     {
         Because of = () => {
-            using (var scope = new ActivityScope("Root task scope", "Bob")) {
+            using (var scope = new ActivityScope("Root task scope", "PARENT-GUID")) {
                 var barrier = new Barrier(2);
                 var t1 = Task.Run((Action) (() => ChildTaskA(barrier, scope.Id)));
                 var t2 = Task.Run((Action) (() => ChildTaskB(barrier, scope.Id)));
@@ -105,7 +105,7 @@ namespace CorrelatorSharp.Tests
             }
         };
 
-        It should_preserve_correct_parents = () => {
+        It should_preserve_correct_parent = () => {
             // Expectations in child tasks
         };
 
@@ -115,7 +115,7 @@ namespace CorrelatorSharp.Tests
 
         private static void ChildTaskA(Barrier barrier, string expectedParentId)
         {
-            using (var scopeA = new ActivityScope("Child task A", "Bob 1")) {
+            using (var scopeA = new ActivityScope("Child task A", "CHILD-A-GUID")) {
                 barrier.SignalAndWait();
                 scopeA.ParentId.ShouldEqual(expectedParentId);
             }
@@ -123,8 +123,7 @@ namespace CorrelatorSharp.Tests
 
         private static void ChildTaskB(Barrier barrier, string expectedParentId)
         {
-            using (var scopeB = new ActivityScope("Child task B", "Bob 2"))
-            {
+            using (var scopeB = new ActivityScope("Child task B", "CHILD-B-GUID")) {
                 barrier.SignalAndWait();
                 scopeB.ParentId.ShouldEqual(expectedParentId);
             }
