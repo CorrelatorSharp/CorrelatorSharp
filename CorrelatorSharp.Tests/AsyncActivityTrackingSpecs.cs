@@ -81,6 +81,4 @@ namespace CorrelatorSharp.Tests
             Scope.Dispose();
         };
     }
-
- 
 }

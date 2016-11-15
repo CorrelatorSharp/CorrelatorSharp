@@ -1,17 +1,17 @@
 ﻿using System;
 using System.Linq;
 using System.Threading;
-using System.Collections.Generic;
+using System.Collections.Immutable;
 
 namespace CorrelatorSharp
 {
     internal static class ActivityTracker
     {
-        private static readonly AsyncLocal<Stack<ActivityScope>> _activityStack = new AsyncLocal<Stack<ActivityScope>>();
+        private static readonly AsyncLocal<ImmutableStack<ActivityScope>> _activityStack = new AsyncLocal<ImmutableStack<ActivityScope>>();
 
         public static ActivityScope Current {
             get {
-                if (_activityStack.Value != null && _activityStack.Value.Count > 0)
+                if (_activityStack.Value != null && _activityStack.Value.Any())
                     return _activityStack.Value.Peek();
 
                 return null;
@@ -20,32 +20,37 @@ namespace CorrelatorSharp
 
         public static ActivityScope Find(string id)
         {
-            if (String.IsNullOrWhiteSpace(id))
+            if (string.IsNullOrWhiteSpace(id))
                 return null;
 
-            if (_activityStack.Value != null && _activityStack.Value.Count > 0)
-                return _activityStack.Value.FirstOrDefault(scope => String.Equals(id, scope.Id, StringComparison.InvariantCultureIgnoreCase));
+            if (_activityStack.Value != null && _activityStack.Value.Any())
+                return _activityStack.Value.FirstOrDefault(scope => string.Equals(id, scope.Id, StringComparison.InvariantCultureIgnoreCase));
 
             return null;
         }
 
-        private static Stack<ActivityScope> ActivityStack {
+        private static ImmutableStack<ActivityScope> ActivityStack {
             get {
                 if (_activityStack.Value == null)
-                    return _activityStack.Value = new Stack<ActivityScope>();
+                    return _activityStack.Value = ImmutableStack<ActivityScope>.Empty;
 
                 return _activityStack.Value;
+            }
+
+            set
+            {
+                 _activityStack.Value = value;
             }
         }
 
         public static void Start(ActivityScope scope)
         {
-            ActivityScope parent = ActivityStack.Count > 0 ? ActivityStack.Peek() : null;
+            var parent = ActivityStack.Any() ? ActivityStack.Peek() : null;
 
             if (parent != null)
                 scope.ParentId = parent.Id;
 
-            ActivityStack.Push(scope);
+            ActivityStack = ActivityStack.Push(scope);
         }
 
         public static void End(ActivityScope scope)
@@ -53,12 +58,14 @@ namespace CorrelatorSharp
             if (Current == null)
                 return;
 
-            if (!ActivityStack.Any(scopeOnTheStack => scope.Id == scopeOnTheStack.Id))
+            if (ActivityStack.All(scopeOnTheStack => scope.Id != scopeOnTheStack.Id))
                 return;
 
-            ActivityScope currentScope = ActivityStack.Pop();
-            while(ActivityStack.Count > 0 && currentScope.Id != scope.Id) {
-                currentScope = ActivityStack.Pop();
+            ActivityScope currentScope;
+            ActivityStack = ActivityStack.Pop(out currentScope);
+
+            while(ActivityStack.Any() && currentScope.Id != scope.Id) {
+                ActivityStack = ActivityStack.Pop(out currentScope);
             }
         }
     }

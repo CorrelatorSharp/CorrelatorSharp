@@ -1,5 +1,5 @@
 environment:
-  release_version: '1.1.0'
+  release_version: '1.2.0'
   release_assembly_version: '1.1.0.0'
   
 version: '$(release_version)+{build}'
