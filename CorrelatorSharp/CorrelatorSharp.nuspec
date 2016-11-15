@@ -8,6 +8,7 @@
     <projectUrl>https://github.com/CorrelatorSharp</projectUrl>
     <description>CorrelatorSharp</description>
     <dependencies>
+      <dependency id="Microsoft.Bcl.Immutable" version="[1.0,2.0)" />
     </dependencies>
   </metadata>
   <files>
