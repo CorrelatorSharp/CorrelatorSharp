@@ -24,7 +24,7 @@ namespace CorrelatorSharp
                 return null;
 
             if (_activityStack.Value != null && _activityStack.Value.Any())
-                return _activityStack.Value.FirstOrDefault(scope => string.Equals(id, scope.Id, StringComparison.InvariantCultureIgnoreCase));
+                return _activityStack.Value.FirstOrDefault(scope => string.Equals(id, scope.Id, StringComparison.OrdinalIgnoreCase));
 
             return null;
         }
